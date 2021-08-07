@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+
   scope module: :user do
+
+    get 'homes/top' => 'homes#top', as: 'top'
+    get 'homes/about' =>'homes#about', as: 'about'
 
     resource :users, only: [:show, :edit, :update]
     get 'users/skill_sheet_edit' => 'users#skill_sheet_edit', as: 'skill_sheet_edit'

@@ -10,6 +10,49 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+
+        <%= link_to top_path, method: :get do %>
+          <i class="fas fa-birthday-cake fa-5x navbar-brand"></i>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class=" nav-item mr-5">
+              ようこそ、<%= current_user.last_name %>さん！
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "マイプロイール", users_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "フォロー申請一覧", top_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "退会", top_path %>
+            </li>
+          <% else %>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "FDSについて", about_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "無料会員登録", new_user_registration_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "ログイン", new_user_session_path %>
+            </li class="btn btn-outline-secondary nav-item mr-5">
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
