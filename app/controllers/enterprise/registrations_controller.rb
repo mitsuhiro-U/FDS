@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Enterprise::RegistrationsController < Devise::RegistrationsController
-  before_action :, only: [:create]
+  before_action :configure_permitted_parameters, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -73,7 +73,7 @@ class Enterprise::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [
-      :last_name,
+      :last_name,ra
       :first_name,
       :last_name_kana,
       :first_name_kana,

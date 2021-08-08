@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  namespace :enterprise do
+    get 'homes/top'
+    get 'homes/about'
+  end
+  
   scope module: :user do
 
     get '/' => 'homes#top', as: 'top'

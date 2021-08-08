@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_105259) do
+ActiveRecord::Schema.define(version: 2021_08_08_142710) do
 
   create_table "enterprises", force: :cascade do |t|
     t.string "name", null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_08_08_105259) do
     t.string "capital", null: false
     t.string "annual_sales", null: false
     t.string "president", null: false
-    t.string "business_content", null: false
+    t.string "business_content"
     t.boolean "is_active", default: true, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
