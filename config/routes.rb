@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  devise_for :enterprises
   scope module: :user do
 
     get '/' => 'homes#top', as: 'top'
@@ -14,8 +13,18 @@ Rails.application.routes.draw do
     patch 'users/desired_condition_edit' => 'users#desired_condition_update', as: 'desired_condition_update'
     get 'users/self_pr_edit' => 'users#self_pr_edit', as: 'self_pr_edit'
     patch 'users/self_pr_edit' => 'users#self_pr_update', as: 'self_pr_update'
+    
   end
+  
+  
 
+
+    devise_for :enterprises, controllers: {
+        sessions:      'enterprise/sessions',
+        passwords:     'enterprise/passwords',
+        registrations: 'enterprise/registrations'
+    }
+    
     devise_for :users, controllers: {
         sessions:      'user/sessions',
         passwords:     'user/passwords',
