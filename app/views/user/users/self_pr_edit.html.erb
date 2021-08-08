@@ -1,19 +1,24 @@
 <div class="container">
-  <h4>希望条件</h4>
-  <span class="text-danger">*</span><p>は入力必須事項です。</p>
+  <h4>自己PR</h4>
+  <p><span class="text-danger">*</span>は入力必須事項です。</p>
 
-  <%= form_with model: @user, url: desired_condition_update_path, local: true do |f| %>
+  <%= form_with model: @user, url: self_pr_update_path, local: true do |f| %>
 
-    <div class="row">
-      <div class="col-sm-3">
-        <h5>希望年収</h5>
-      </div>
-      <div class="col-sm-9">
-
-      </div>
+    <div class="mt-3">
+      <%= f.label :job_career, "職務経歴" %><span class="text-danger">*</span><br>
+      <%= f.label :job_career, "※200字以内" %><br>
+      <%= f.text_area :job_career, maxlength: 200, size: "100x12" %>
     </div>
-    
-  
+
+    <div  class="mt-3">
+      <%= f.label :job_summary, "職務要約" %><span class="text-danger">*</span><br>
+      <%= f.label :job_summary, "※2000字以内" %><br>
+      <%= f.text_area :job_summary, maxlength: 2000, size: "100x15" %>
+    </div>
+
+    <div class="mt-3">
+      <%= f.submit "更新する", class: "btn btn-success" %>
+    </div>
   <% end %>
 
 </div>

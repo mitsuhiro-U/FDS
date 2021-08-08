@@ -1,2 +1,24 @@
-<h1>User::Users#edit</h1>
-<p>Find me in app/views/user/users/edit.html.erb</p>
+<div class="container">
+
+  <div class="row">
+    <h3>本当に退会しますか？</h3>
+  </div>
+
+  <div class="row">
+    <h4>本サイトでの企業様とのやりとり、プロフィール等が完全に削除されます。</h4>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @user, local: true do |f| %>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <<%= link_to "退会する", users_path, method: :patch, class: "btn btn-danger" %>>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "退会しない", users_path, class: "btn btn-primary" %>
+      </div>
+      <div class="col-sm-3"></div>
+    <% end %>
+  </div>
+
+</div>

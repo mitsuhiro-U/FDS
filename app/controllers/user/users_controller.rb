@@ -29,9 +29,13 @@ class User::UsersController < ApplicationController
   end
 
   def self_pr_edit
+    @user = current_user
   end
 
   def self_pr_update
+    user = current_user
+    user.update(self_pr_params)
+    redirect_to users_path
   end
 
   private
@@ -45,6 +49,10 @@ class User::UsersController < ApplicationController
 
   def desired_condition_params
     params.require(:user).permit(:desired_salary, :preferred_workplace, :desired_field, :timing, :request)
+  end
+
+  def self_pr_params
+    params.require(:user).permit(:job_career, :job_summary)
   end
 
 end
