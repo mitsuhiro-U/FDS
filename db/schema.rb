@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_124933) do
     t.string "specialized_field"
     t.integer "number"
     t.integer "manufacturing_status"
-    t.integer "purchasing_status"
+    t.integer "purchasing_statu0s"
     t.integer "quality_management_status"
     t.integer "food_labeling_status"
     t.integer "management_status"

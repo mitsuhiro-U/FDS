@@ -9,9 +9,13 @@ class User::UsersController < ApplicationController
   end
 
   def skill_sheet_edit
+    @user = current_user
   end
 
   def skill_sheet_update
+    user = current_user
+    user.update(skill_sheet_params)
+    redirect_to users_path
   end
 
   def desired_condition_edit
@@ -25,4 +29,14 @@ class User::UsersController < ApplicationController
 
   def self_pr_update
   end
+
+  private
+
+  def skill_sheet_params
+    params.require(:user).permit(
+      :specialized_field, :number, :manufacturing_status, :purchasing_status, :quality_management_status,
+      :food_labeling_status, :management_status, :notice
+    )
+  end
+
 end
