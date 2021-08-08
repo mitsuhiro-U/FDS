@@ -1,2 +1,63 @@
-<h1>User::Users#desired_condition_edit</h1>
-<p>Find me in app/views/user/users/desired_condition_edit.html.erb</p>
+<div class="container">
+  <h4>希望条件</h4>
+  <p><span class="text-danger">*</span>は入力必須事項です。</p>
+
+  <%= form_with model: @user, url: desired_condition_update_path, local: true do |f| %>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <h5>希望年収<span class="text-danger">*</span></h5>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :desired_salary, placeholder: "(例)500万円以上", size: 30 %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <h5>希望勤務地<span class="text-danger">*</span></h5>
+        <p>※複数回答推奨</p>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :preferred_workplace, placeholder: "(例)東京都、埼玉県、千葉県", size: 40 %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <h5>希望分野</h5>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :desired_field, placeholder: "(例)液体調味料、畜肉加工品", size: 40 %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <h5>転職時期</h5>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :timing, placeholder: "(例)オファーを頂いた後、1ヶ月後から可", size: 40 %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <h5>その他希望事項</h5>
+        <p>※200字以内</p>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_area :request, maxlength:200, placeholder: "(例)マイカー通勤可能であれば尚可", size: "60x15" %>
+      </div>
+    </div>
+
+     <div class="row mt-3">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-9">
+        <%= f.submit "更新する", class: "btn btn-success" %>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>

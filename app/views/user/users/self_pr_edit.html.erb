@@ -1,2 +1,19 @@
-<h1>User::Users#self_pr_edit</h1>
-<p>Find me in app/views/user/users/self_pr_edit.html.erb</p>
+<div class="container">
+  <h4>希望条件</h4>
+  <span class="text-danger">*</span><p>は入力必須事項です。</p>
+
+  <%= form_with model: @user, url: desired_condition_update_path, local: true do |f| %>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>希望年収</h5>
+      </div>
+      <div class="col-sm-9">
+
+      </div>
+    </div>
+    
+  
+  <% end %>
+
+</div>

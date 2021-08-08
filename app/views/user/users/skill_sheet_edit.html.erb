@@ -3,6 +3,7 @@
 　<p><%= current_user.last_name %> 様の開発関連スキルを視覚的に企業様に伝えるため、FDS独自で作成したアンケート表です。</p>
 
   <%= form_with model: @user, url: skill_sheet_update_path, local: true do |f| %>
+  
     <div class="row">
       <div class="col-sm-2">
         <h5>専門分野</h5>

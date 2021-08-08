@@ -19,9 +19,13 @@ class User::UsersController < ApplicationController
   end
 
   def desired_condition_edit
+    @user = current_user
   end
 
   def desired_condition_update
+    user = current_user
+    user.update(desired_condition_params)
+    redirect_to users_path
   end
 
   def self_pr_edit
@@ -37,6 +41,10 @@ class User::UsersController < ApplicationController
       :specialized_field, :number, :manufacturing_status, :purchasing_status, :quality_management_status,
       :food_labeling_status, :management_status, :notice
     )
+  end
+
+  def desired_condition_params
+    params.require(:user).permit(:desired_salary, :preferred_workplace, :desired_field, :timing, :request)
   end
 
 end
