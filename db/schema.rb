@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_04_124933) do
+ActiveRecord::Schema.define(version: 2021_08_08_105259) do
+
+  create_table "enterprises", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "name_kana", null: false
+    t.string "established", null: false
+    t.string "capital", null: false
+    t.string "annual_sales", null: false
+    t.string "president", null: false
+    t.string "business_content", null: false
+    t.boolean "is_active", default: true, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_enterprises_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_enterprises_on_reset_password_token", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "last_name", null: false
@@ -24,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_124933) do
     t.string "specialized_field"
     t.integer "number"
     t.integer "manufacturing_status"
-    t.integer "purchasing_statu0s"
+    t.integer "purchasing_status"
     t.integer "quality_management_status"
     t.integer "food_labeling_status"
     t.integer "management_status"

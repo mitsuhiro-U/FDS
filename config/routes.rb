@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :enterprises
   scope module: :user do
 
     get '/' => 'homes#top', as: 'top'
