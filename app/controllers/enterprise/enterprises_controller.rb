@@ -11,6 +11,14 @@ class Enterprise::EnterprisesController < ApplicationController
   def business_content_update
   end
   
+  def user_search
+    
+  end
+  
+  def search_result
+    
+  end
+  
   def withdrawal
   end
   
