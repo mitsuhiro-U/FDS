@@ -1,31 +1,100 @@
-<div>  
-  <h2>企業様用新規会員登録</h2>
-  
+<div class="container">
+  <h4>企業様用新規会員登録</h4>
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "enterprise/shared/error_messages", resource: resource %>
-  
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :name, "御社名" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :name, size: 40 %>
+      </div>
     </div>
-  
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :name_kana, "御社名(カナ)" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :name_kana, size: 40 %>
+      </div>
     </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :established, "設立" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :established %>
+      </div>
     </div>
-  
-    <div class="actions">
-      <%= f.submit "Sign up" %>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :capital, "資本金" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :capital %>
+      </div>
     </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :annual_sales, "年商" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :annual_sales %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :president, "代表者" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :president %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :email, "メールアドレス" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 50 %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :password, "パスワード" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :password_confirmation, "パスワード確認用" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-9">
+        <%= f.submit "登録する", class: "btn btn-primary" %>
+      </div>
+    </div>
+
   <% end %>
-  
-  <%= render "enterprise/shared/links" %>
+
 </div>

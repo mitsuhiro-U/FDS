@@ -19,10 +19,10 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            
+
             <% if user_signed_in? %>
               <li class=" nav-item mr-5">
                 ようこそ、<%= current_user.last_name %>さん！
@@ -39,8 +39,8 @@
               <li class="btn btn-outline-secondary nav-item mr-5">
                 <%= link_to "退会", edit_users_path %>
               </li>
-              
-            <% elsif enterprise_signd_in? %>
+
+            <% elsif enterprise_signed_in? %>
               </li>
                 <li class="btn btn-outline-secondary nav-item mr-5">
                   <%= link_to "チャットルーム", enterprise_enterprises_path %>
@@ -52,12 +52,12 @@
                   <%= link_to "スキル表から検索", enterprise_enterprises_path %>
                 </li>
                 <li class="btn btn-outline-secondary nav-item mr-5">
-                <%= link_to "ログアウト", destroy_enterprice_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_enterprise_session_path, method: :delete %>
                 </li>
                 <li class="btn btn-outline-secondary nav-item mr-5">
                   <%= link_to "退会", enterprise_withdrawal_path %>
                 </li>
-            
+
             <% else %>
               <li class="btn btn-outline-secondary nav-item mr-5">
                 <%= link_to "FDSについて", about_path %>
@@ -69,7 +69,7 @@
                 <%= link_to "ログイン", new_user_session_path %>
               </li class="btn btn-outline-secondary nav-item mr-5">
             <% end %>
-          
+
           </ul>
         </div>
       </div>
