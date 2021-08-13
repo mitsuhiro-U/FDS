@@ -1,8 +1,6 @@
 <div class="container">
-<%# user.rb に定義したメソッドを使用したいが、nomethoderror`が発生してしまう。 %>
 
   <h4>求職者様一覧</h4>
-
 
   <table class="table">
     <thead>
@@ -17,32 +15,12 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td>
-            <%= user.last_name + " " + user.first_name + " 様"%>
-            </td>
-          <td>
-            <% if user.gender == 0 %>
-              男性
-            <% elsif user.gender == 1 %>
-              女性
-            <% end %>
-          <td>
-            <%= (Date.today.strftime("%Y%m%d").to_i - user.birthday.strftime("%Y%m%d").to_i) / 10000 %>
-          </td>
-          <td>
-            <% if user.specialized_field.blank? %>
-              未記入
-            <% else %>
-              <%= user.specialized_field %>
-            <% end %>
-          </td>
-          <td>
-            <% if user.manufacturing_status.blank? %>
-              未記入
-            <% else %>
-              <%= (user.manufacturing_status + user.purchasing_status + user.quality_management_status + user.food_labeling_status + user.management_status).to_s + " / 15" %>
-            <% end %>
-          </td>
+          <%# 下記5行はUserモデルのメソッドを使用 %>
+          <td><%= user.full_name  %></td>
+          <td><%= user.gender_is %></td>
+          <td><%= user.age_is %></td>
+          <td><%= user.specialized_field_is %></td>
+          <td><%= user.total_score %></td>
         </tr>
       <% end %>
     </tbody>

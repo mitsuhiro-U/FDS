@@ -1,0 +1,28 @@
+<div class="container">
+
+  <h4>検索結果</h4>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>氏名</th>
+        <th>性別</th>
+        <th>年齢</th>
+        <th>専門分野</th>
+        <th>スキル合計点</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <%# 下記5行はUserモデルのメソッドを使用 %>
+          <td><%= user.full_name  %></td>
+          <td><%= user.gender_is %></td>
+          <td><%= user.age_is %></td>
+          <td><%= user.specialized_field_is %></td>
+          <td><%= user.total_score %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

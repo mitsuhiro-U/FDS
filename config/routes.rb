@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     patch '/withdrawal' => "enterprises#withdrawal_update", as: "withdrawal_update"
 
     resources :users, only: [:show, :index]
+    get '/user_search' => "enterprises#user_search", as: "user_search"
+    get '/search_result' => "enterprises#search_result", as: "search_result"
 
   end
 
