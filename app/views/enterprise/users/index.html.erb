@@ -16,7 +16,7 @@
       <% @users.each do |user| %>
         <tr>
           <%# 下記5行はUserモデルのメソッドを使用 %>
-          <td><%= user.full_name  %></td>
+          <td><%= link_to "#{user.full_name}", enterprise_user_path(user.id) %></td>
           <td><%= user.gender_is %></td>
           <td><%= user.age_is %></td>
           <td><%= user.specialized_field_is %></td>

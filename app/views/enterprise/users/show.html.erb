@@ -1,2 +1,26 @@
-<h1>Enterprise::Users#show</h1>
-<p>Find me in app/views/enterprise/users/show.html.erb</p>
+<div class="container">
+  <%# 下記1行はモデルのメソッドを使用 %>
+  <h4><%= @user.full_name %>の詳細ページ</h4>
+
+  <h5>特記事項</h5>
+  <%= @user.notice %>
+
+  <h5>自己PR</h5>
+  <p>職務履歴</p>
+　<%= @user.job_career %>
+　<p>職務要約</p>
+　<%= @user.job_summary %>
+
+　<h5>希望条件</h5>
+　<p>希望年収</p>
+  <%= @user.desired_salary %>
+  <p>希望勤務地</p>
+  <%= @user.preferred_workplace %>
+  <p>希望分野</p>
+  <%= @user.desired_field %>
+  <p>転職時期</p>
+  <%= @user.timing %>
+  <p>その他希望事項</p>
+  <%= @user.request %>
+
+</div>
