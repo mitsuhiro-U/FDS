@@ -4,6 +4,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :relationships, foreign_key: "user_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :enterprise
+
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "enterprise_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :user
+
+  def following?(enterprise)
+    self.followings.include?(enterprise)
+  end
+
+  def follow(enterprise)
+    self.relationships.find_or_create_by(enterprise_id: enterprise.id)
+  end
+
+  def unfollow(enterprise)
+    relationship = self.relationships.find_by(enterprise_id: enter.id)
+    relationship.destroy if relationship
+  end
 
   def full_name
     self.last_name + " " + self.first_name + " 様"
