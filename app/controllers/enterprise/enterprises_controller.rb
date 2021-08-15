@@ -1,8 +1,18 @@
 class Enterprise::EnterprisesController < ApplicationController
+
+  def show
+    @enterprise = current_enterprise
+    @users = @enterprise.followings.all
+  end
+
   def edit
+    @enterprise = current_enterprise
   end
 
   def update
+    enterprise = current_enterprise
+    enterprise.update(business_content_params)
+    redirect_to enterprise_business_content_path
   end
 
   def business_content
@@ -38,5 +48,9 @@ class Enterprise::EnterprisesController < ApplicationController
       :food_labeling_status, :management_status
     )
   end
-
+  
+  def business_content_params
+    params.require(:enterprise).permit(:business_content)
+  end
+  
 end

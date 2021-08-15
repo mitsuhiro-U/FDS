@@ -1,0 +1,24 @@
+<div class="container">
+
+  <div class="row mt-3">
+    <div class="col-sm-2">
+      <p>業務内容</p>
+    </div>
+    <div class="col-sm-2">
+      <% if current_enterprise.business_content == nil %>
+        <p>未入力</p>
+      <% else %>
+        <p>入力済</p>
+      <% end %>
+    </div>
+    <div class="col-sm-8">
+      <%= link_to "業務内容を入力", edit_enterprise_enterprises_path, class: "btn btn-success w-25" %>
+    </div>
+  </div>
+
+  <h4>フォロー中のユーザー</h4>
+
+  <% @users.each do |user| %>
+    <%= user.full_name %>
+  <% end %>
+</div>

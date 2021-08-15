@@ -1,0 +1,12 @@
+<% if current_enterprise.following?(user) %>
+  <%= form_with model: @relationship, url: enterprise_relationship_path, method: :delete, local: true do |f| %>
+    <%= f.hidden_field :user_id, value: user.id %>
+    <%= f.submit "フォローを解除する" %>
+  <% end %>
+
+<% else %>
+  <%= form_with model: @set_relationship, url: enterprise_relationships_path, local: true do |f| %>
+    <%= f.hidden_field :user_id, value: user.id %>
+    <%= f.submit "フォロー" %>
+  <% end %>
+<% end %>

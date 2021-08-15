@@ -18,7 +18,7 @@ class Enterprise < ApplicationRecord
     self.relationships.find_or_create_by(user_id: user.id)
   end
   
-  def unfollow()
+  def unfollow(user)
     relationship = self.relationships.find_by(user_id: user.id)
     relationship.destroy if relationship
   end

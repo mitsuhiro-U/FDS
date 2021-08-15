@@ -22,5 +22,7 @@
   <%= @user.timing %>
   <p>その他希望事項</p>
   <%= @user.request %>
+  
+  <%= render 'enterprise/relationships/follow_form', user: @user %>
 
 </div>
