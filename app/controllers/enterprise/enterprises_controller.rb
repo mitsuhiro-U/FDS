@@ -11,14 +11,18 @@ class Enterprise::EnterprisesController < ApplicationController
 
   def update
     enterprise = current_enterprise
-    enterprise.update(business_content_params)
-    redirect_to enterprise_business_content_path
+    enterprise.update(enterprise_params)
+    redirect_to enterprise_enterprises_path
   end
 
   def business_content
+    @enterprise = current_enterprise
   end
 
   def business_content_update
+    enterprise = current_enterprise
+    enterprise.update(business_content_params)
+    redirect_to enterprise_enterprises_path
   end
 
   def user_search
@@ -48,9 +52,13 @@ class Enterprise::EnterprisesController < ApplicationController
       :food_labeling_status, :management_status
     )
   end
-  
+
   def business_content_params
     params.require(:enterprise).permit(:business_content)
   end
-  
+
+  def enterprise_params
+    params.require(:enterprise).permit(:name, :name_kana, :established, :capital, :annual_sales, :president, :email)
+  end
+
 end

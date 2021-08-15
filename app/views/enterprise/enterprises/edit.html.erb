@@ -1,16 +1,78 @@
 <div class="container">
+  <h4>企業情報編集</h4>
 
-  <h4>業務内容入力</h4>
-  <p>
-    求職者様は業務内容の内容をもとにフォローの可否を判断します。<br>
-    出来るだけ漏れなく、具体的に入力を頂くことで相互フォローの確率が高まります。
+  <%= form_with model: @enterprise, url: enterprise_enterprises_path, local: true do |f| %>
 
-  </p>
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :name, "御社名" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :name, size: 40 %>
+      </div>
+    </div>
 
-  <%= form_with model: @enterprise, local: true do |f| %>
-    <%= f.label :business_content, "業務内容を入力 ※2,000字以内" %><br>
-    <%= f.text_area :business_content, maxlength: 2000, size: "100x15" %><br>
-    <%= f.submit "更新する", class: "btn btn-success" %><br>
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :name_kana, "御社名(カナ)" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :name_kana, size: 40 %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :established, "設立" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :established %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :capital, "資本金" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :capital %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :annual_sales, "年商" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :annual_sales %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :president, "代表者" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :president %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <%= f.label :email, "メールアドレス" %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 50 %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-9">
+        <%= f.submit "編集する", class: "btn btn-primary" %>
+      </div>
+    </div>
+
   <% end %>
 
 </div>

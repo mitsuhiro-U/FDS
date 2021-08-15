@@ -1,5 +1,15 @@
 <div class="container">
 
+   <div class="row mt-3">
+    <div class="col-sm-2">
+      <p>企業情報</p>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <%= link_to "企業情報を編集", edit_enterprise_enterprises_path, class: "btn btn-success w-25" %>
+    </div>
+  </div>
+
   <div class="row mt-3">
     <div class="col-sm-2">
       <p>業務内容</p>
@@ -12,7 +22,7 @@
       <% end %>
     </div>
     <div class="col-sm-8">
-      <%= link_to "業務内容を入力", edit_enterprise_enterprises_path, class: "btn btn-success w-25" %>
+      <%= link_to "業務内容を入力", enterprise_business_content_path, class: "btn btn-success w-25" %>
     </div>
   </div>
 
