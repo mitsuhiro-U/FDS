@@ -4,11 +4,18 @@ class Enterprise < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #------- フォロー関連のアソシエーション-------------------------------------------------------------------------
   has_many :relationships, foreign_key: "enterprise_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :user
 
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "user_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :enterprise
+  #---------------------------------------------------------------------------------------------------------
+
+  #------- DM関連のアソシエーション-------------------------------------------------------------------------
+  has_many :rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  #---------------------------------------------------------------------------------------------------------
 
   def following?(user)
     self.followings.include?(user)
