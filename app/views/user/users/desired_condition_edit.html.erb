@@ -47,7 +47,8 @@
         <p>※200字以内</p>
       </div>
       <div class="col-sm-9">
-        <%= f.text_area :request, maxlength: 200, placeholder: "(例)マイカー通勤可能であれば尚可", size: "60x15" %>
+        <%= f.text_area :request, maxlength: 200, placeholder: "(例)マイカー通勤可能であれば尚可", size: "60x15", class: 'js-text-200' %>
+        <p class="js-text-count-200"></p>
       </div>
     </div>
 

@@ -3,79 +3,80 @@
 　<p><%= current_user.last_name %> 様の開発関連スキルを視覚的に企業様に伝えるため、FDS独自で作成したアンケート表です。</p>
 
   <%= form_with model: @user, url: skill_sheet_update_path, local: true do |f| %>
-  
+
     <div class="row">
       <div class="col-sm-2">
-        <h5>専門分野</h5>
+        <h5>・専門分野</h5>
       </div>
       <div class="col-sm-10">
         <%= f.select :specialized_field, [["液体調味料", "液体調味料"], ["粉体調味料", "粉体調味料"], ["畜肉加工品", "畜肉加工品"], ["水産加工品", "水産加工品"], ["そうざい", "そうざい"]] %>
       </div>
     </div>
 
-    <h5>専門分野で選択した開発品目数を下記から選択してください。  ※実際に製造、販売を行った製品のみ</h5>
-    <%= f.radio_button :number, '0' %>
+    <h5 class="mt-3">・専門分野で選択した開発品目数を下記から選択してください。  ※実際に製造、販売を行った製品のみ</h5>
+    <%= f.radio_button :number, '0', class: "ml-3" %>
     <%= f.label :number, '1～5品', value: 0 %><br>
-    <%= f.radio_button :number, '1' %>
+    <%= f.radio_button :number, '1', class: "ml-3" %>
     <%= f.label :number, '5～10品', value: 1 %><br>
-    <%= f.radio_button :number, '2' %>
+    <%= f.radio_button :number, '2', class: "ml-3" %>
     <%= f.label :number, '10品～30品', value: 2 %><br>
-    <%= f.radio_button :number, '3' %>
+    <%= f.radio_button :number, '3', class: "ml-3 mb-3" %>
     <%= f.label :number, '30品以上', value: 3 %><br>
 
-    <h5>専門分野で選択した分野における製造工程理解度を下記から選択してください。</h5>
-    <%= f.radio_button :manufacturing_status, '0' %>
+    <h5 class="mt-3">・専門分野で選択した分野における製造工程理解度を下記から選択してください。</h5>
+    <%= f.radio_button :manufacturing_status, '0', class: "ml-3" %>
     <%= f.label :manufacturing_status, '製造工程の作成は製造部門もしくは製造工程を管理する部署が行っていた。', value: 0 %><br>
-    <%= f.radio_button :manufacturing_status, '1' %>
+    <%= f.radio_button :manufacturing_status, '1', class: "ml-3" %>
     <%= f.label :manufacturing_status, '製造工程を概ね理解し、開発可能な品目か不可能な品目か判断することが出来る。', value: 1 %><br>
-    <%= f.radio_button :manufacturing_status, '2' %>
+    <%= f.radio_button :manufacturing_status, '2', class: "ml-3" %>
     <%= f.label :manufacturing_status, '作業工程における安全性、生産性を加味した商品開発が出来る。', value: 2 %><br>
-    <%= f.radio_button :manufacturing_status, '3' %>
+    <%= f.radio_button :manufacturing_status, '3', class: "ml-3 mb-3" %>
     <%= f.label :manufacturing_status, 'HACCPプランに基づき、作業工程における安全性、生産性を加味した商品開発が出来る。', value: 3 %><br>
 
-    <h5>原料（資材）の調達経験について下記から選択してください。</h5>
-    <%= f.radio_button :purchasing_status, '0' %>
+    <h5 class="mt-3">・原料（資材）の調達経験について下記から選択してください。</h5>
+    <%= f.radio_button :purchasing_status, '0', class: "ml-3" %>
     <%= f.label :purchasing_status, '仕入（購買）の経験はない。（既存原料のみを扱っていた。）', value: 0 %><br>
-    <%= f.radio_button :purchasing_status, '1' %>
+    <%= f.radio_button :purchasing_status, '1', class: "ml-3" %>
     <%= f.label :purchasing_status, '仕入（購買）担当部署に掛け合い、新規原料の導入を行うことが出来る。', value: 1 %><br>
-    <%= f.radio_button :purchasing_status, '2' %>
+    <%= f.radio_button :purchasing_status, '2', class: "ml-3" %>
     <%= f.label :purchasing_status, '自身で商社、メーカーに掛け合い、必要なサンプルを調達することが出来る。', value: 2 %><br>
-    <%= f.radio_button :purchasing_status, '3' %>
+    <%= f.radio_button :purchasing_status, '3', class: "ml-3 mb-3" %>
     <%= f.label :purchasing_status, '仕入機能もある程度担っていた。関連法律（下請法）やPB品のオーダーについてもある程度理解がある。', value: 3 %><br>
 
-    <h5>品質管理の経験について下記から当てはまるものを選択してください。</h5>
-    <%= f.radio_button :quality_management_status, '0' %>
+    <h5 class="mt-3">・品質管理の経験について下記から当てはまるものを選択してください。</h5>
+    <%= f.radio_button :quality_management_status, '0', class: "ml-3" %>
     <%= f.label :quality_management_status, '品質管理はすべて関連部署が行っており、携わったことがない。', value: 0 %><br>
-    <%= f.radio_button :quality_management_status, '1' %>
+    <%= f.radio_button :quality_management_status, '1', class: "ml-3" %>
     <%= f.label :quality_management_status, '品質管理を行う上で必要な検査項目、温度基準等を決定する会議に参加していた。', value: 1 %><br>
-    <%= f.radio_button :quality_management_status, '2' %>
+    <%= f.radio_button :quality_management_status, '2', class: "ml-3" %>
     <%= f.label :quality_management_status, '工程上問題となる病原性微生物に対して理解があり、危害分析を行うことができる。', value: 2 %><br>
-    <%= f.radio_button :quality_management_status, '3' %>
+    <%= f.radio_button :quality_management_status, '3', class: "ml-3 mb-3" %>
     <%= f.label :quality_management_status, '品質管理は開発工程の一環であり、開発部署で担っていた。', value: 3 %><br>
 
-    <h5>食品表示作成の経験について下記から当てはまるものを選択してください。</h5>
-    <%= f.radio_button :food_labeling_status, '0' %>
+    <h5 class="mt-3">・食品表示作成の経験について下記から当てはまるものを選択してください。</h5>
+    <%= f.radio_button :food_labeling_status, '0', class: "ml-3" %>
     <%= f.label :food_labeling_status, '食品表示作成は別部署で行われており、携わったことがない。', value: 0 %><br>
-    <%= f.radio_button :food_labeling_status, '1' %>
+    <%= f.radio_button :food_labeling_status, '1', class: "ml-3" %>
     <%= f.label :food_labeling_status, '社内で使用が禁止されている、アレルゲンや添加物を理解している。', value: 1 %><br>
-    <%= f.radio_button :food_labeling_status, '2' %>
+    <%= f.radio_button :food_labeling_status, '2', class: "ml-3" %>
     <%= f.label :food_labeling_status, '食品表示作成を行ったことがある。', value: 2 %><br>
-    <%= f.radio_button :food_labeling_status, '3' %>
+    <%= f.radio_button :food_labeling_status, '3', class: "ml-3 mb-3" %>
     <%= f.label :food_labeling_status, '食品表示作成業務は開発業務の一環であり、食品表示検定等公的な資格を所持している。', value: 3 %><br>
 
-    <h5>マネジメント経験の有無</h5>
-    <%= f.radio_button :management_status, '0' %>
+    <h5 class="mt-3">・マネジメント経験の有無</h5>
+    <%= f.radio_button :management_status, '0', class: "ml-3" %>
     <%= f.label :management_status, 'マネジメント経験はない。', value: 0 %><br>
-    <%= f.radio_button :management_status, '1' %>
+    <%= f.radio_button :management_status, '1', class: "ml-3" %>
     <%= f.label :management_status, '主任(リーダー)として、働いていた経験がある。（部下の目安人数1～2名）', value: 1 %><br>
-    <%= f.radio_button :management_status, '2' %>
+    <%= f.radio_button :management_status, '2', class: "ml-3" %>
     <%= f.label :management_status, 'MGR（課長）として働いていた経験がある。（部下目安人数3～5名）', value: 2 %><br>
-    <%= f.radio_button :management_status, '3' %>
+    <%= f.radio_button :management_status, '3', class: "ml-3 mb-3" %>
     <%= f.label :management_status, 'それ以上の役職で働いていた経験がある。', value: 3 %><br>
 
-　　<h5>その他特記事項（500字以内）</h5>
+　　<h5 class="mt-3">・その他特記事項（2000字以内）</h5>
 　　<p>専門分野を複数お持ちの方はこちらにご記入ください。<br>上記フォーマットに則って記載頂くと、企業様に伝わりやすくなります。</p>
-    <%= f.text_area :notice, maxlength:500, size: "110x20" %>
+    <%= f.text_area :notice, maxlength:2000, size: "110x20", class: 'js-text-2000' %>
+    <p class="js-text-count-2000"></p>
 
     <div class="row">
       <%= f.submit "更新する", class: "btn btn-success ml-3" %>

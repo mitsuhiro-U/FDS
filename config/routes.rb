@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+    devise_for :enterprises, controllers: {
+        sessions:      'enterprise/sessions',
+        passwords:     'enterprise/passwords',
+        registrations: 'enterprise/registrations'
+    }
+
+    devise_for :users, controllers: {
+        sessions:      'user/sessions',
+        passwords:     'user/passwords',
+        registrations: 'user/registrations'
+    }
 
   namespace :enterprise do
 
@@ -15,9 +26,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index]
     get '/user_search' => "enterprises#user_search", as: "user_search"
     get '/search_result' => "enterprises#search_result", as: "search_result"
-    
+
     resources :relationships, only: [:create, :destroy]
-    
+
   end
 
 
@@ -33,21 +44,13 @@ Rails.application.routes.draw do
     patch 'users/desired_condition_edit' => 'users#desired_condition_update', as: 'desired_condition_update'
     get 'users/self_pr_edit' => 'users#self_pr_edit', as: 'self_pr_edit'
     patch 'users/self_pr_edit' => 'users#self_pr_update', as: 'self_pr_update'
-    
+    get 'users/followers' => 'users#followers', as: 'followers'
+
     resources :relationships, only: [:create, :destroy]
-    
+
+    resources :enterprises, only: [:show]
+
   end
 
-    devise_for :enterprises, controllers: {
-        sessions:      'enterprise/sessions',
-        passwords:     'enterprise/passwords',
-        registrations: 'enterprise/registrations'
-    }
-
-    devise_for :users, controllers: {
-        sessions:      'user/sessions',
-        passwords:     'user/passwords',
-        registrations: 'user/registrations'
-    }
 
 end

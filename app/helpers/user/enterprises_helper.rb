@@ -1,0 +1,2 @@
+module User::EnterprisesHelper
+end

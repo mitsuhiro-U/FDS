@@ -1,0 +1,19 @@
+
+<div class="container">
+
+  <h4>フォロー申請一覧</h4>
+
+  <table>
+    <% @enterprises.each do |enterprise| %>
+      <tr>
+        <td>
+          <%= link_to "#{enterprise.name}", enterprise_path(enterprise.id) %>
+        </td>
+        <td>
+
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>

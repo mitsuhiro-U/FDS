@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-  
+
   def show
   end
 
@@ -42,6 +42,11 @@ class User::UsersController < ApplicationController
     user = current_user
     user.update(self_pr_params)
     redirect_to users_path
+  end
+
+  def followers
+    @user = current_user
+    @enterprises = @user.followers.all
   end
 
   private

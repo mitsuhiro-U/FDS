@@ -2,14 +2,15 @@
 
   <h4>業務内容入力</h4>
   <p>
-    求職者様は業務内容の内容をもとにフォローの可否を判断します。<br>
+    求職者様は業務内容をもとにフォローの可否を判断します。<br>
     出来るだけ漏れなく、具体的に入力を頂くことで相互フォローの確率が高まります。
 
   </p>
 
   <%= form_with model: @enterprise, url: enterprise_business_content_update_path, local: true do |f| %>
     <%= f.label :business_content, "業務内容を入力 ※2,000字以内" %><br>
-    <%= f.text_area :business_content, maxlength: 2000, size: "100x15" %><br>
+    <%= f.text_area :business_content, maxlength: 2000, size: "100x15", class: 'js-text-2000' %><br>
+    <p class="js-text-count-2000"></p>
     <%= f.submit "更新する", class: "btn btn-success" %><br>
   <% end %>
 

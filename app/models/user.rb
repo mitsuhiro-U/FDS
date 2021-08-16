@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :relationships, foreign_key: "user_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :enterprise
 
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "enterprise_id", dependent: :destroy
-  has_many :followers, through: :passive_relationships, source: :user
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "user_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :enterprise
 
   def following?(enterprise)
     self.followings.include?(enterprise)
@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def unfollow(enterprise)
-    relationship = self.relationships.find_by(enterprise_id: enter.id)
+    relationship = self.relationships.find_by(enterprise_id: enterprise.id)
     relationship.destroy if relationship
   end
 
