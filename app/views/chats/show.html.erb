@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+
+      <% if user_signed_in? %>
+        <h2><%= @enterprise.name %></h2>
+        <table class="message table">
+          <thead>
+            <tr>
+              <th style="text-align: left; font-size: 20px;"><%= current_user.full_name%></th>
+              <th style="text-align: right; font-size: 20px;"><%= @enterprise.name %></th>
+            </tr>
+          </thead>
+          <% @chats.each do |chat| %>
+            <% if chat.user_id == current_user.id %>
+              <tbody>
+                <tr>
+                  <th>
+                    <p style="text-align: left;"><%= chat.message %></p>
+                  </th>
+                  <th></th>
+                </tr>
+            <% else %>
+                <tr>
+                  <th></th>
+                  <th>
+                    <p style="text-align: right;"><%= chat.message %></p>
+                  </th>
+                </tr>
+              </tbody>
+            <% end %>
+          <% end %>
+        </table>
+      <% elsif enterprise_signed_in? %>
+        <h2>CHAT WITH <%= @user.full_name %></h2>
+        <table class="message table">
+          <thead>
+            <tr>
+              <th style="text-align: left; font-size: 20px;"><%= current_enterprise.name%></th>
+              <th style="text-align: right; font-size: 20px;"><%= @user.full_name %></th>
+            </tr>
+          </thead>
+          <% @chats.each do |chat| %>
+            <% if chat.enterprise_id == current_enterprise.id %>
+              <tbody>
+                <tr>
+                  <th>
+                    <p style="text-align: left;"><%= chat.message %></p>
+                  </th>
+                  <th></th>
+                </tr>
+            <% else %>
+                <tr>
+                  <th></th>
+                  <th>
+                    <p style="text-align: right;"><%= chat.message %></p>
+                  </th>
+                </tr>
+              </tbody>
+            <% end %>
+          <% end %>
+        </table>
+      <% end %>
+
+      <%= form_with model: @chat, remote: true do |f| %>
+        <%= f.text_field :message %>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit "SEND", class: "btn btn-sm btn-success chat-btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>

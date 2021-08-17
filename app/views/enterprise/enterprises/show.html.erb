@@ -27,8 +27,19 @@
   </div>
 
   <h4>フォロー中のユーザー</h4>
-
-  <% @users.each do |user| %>
-    <%= user.full_name %>
+  <span>チャット可能と表示されたユーザーとのチャットはチャットルームから開始出来ます</span>
+  <table class="table mt-3">
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.full_name %></td>
+      <td>
+        <% if user.rooms.find_by(enterprise_id: current_enterprise.id) %>
+          チャット可能
+        <% else %>
+          承認待ち
+        <% end %>
+      </td>
+    </tr>
   <% end %>
+  </table>
 </div>

@@ -16,3 +16,22 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+.center{
+  width: 100%;
+  text-align: center;
+  padding-top : 50px;
+}
+
+.title{
+  margin-bottom: 40px;
+}
+.text{
+  line-height: 40px;
+}
+
+.footer-space{
+  height: 200px;
+  width: 100%;
+}

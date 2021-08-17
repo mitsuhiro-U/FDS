@@ -12,6 +12,9 @@ Rails.application.routes.draw do
         registrations: 'user/registrations'
     }
 
+  get 'chats/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+  
   namespace :enterprise do
 
     get 'homes/top' => "homes#top", as: "top"

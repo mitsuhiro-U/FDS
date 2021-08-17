@@ -1,6 +1,7 @@
 class User::UsersController < ApplicationController
 
   def show
+    @rooms = current_user.rooms
   end
 
   def edit
@@ -20,7 +21,9 @@ class User::UsersController < ApplicationController
 
   def skill_sheet_update
     user = current_user
-    user.update(skill_sheet_params)
+    if user.update(skill_sheet_params)
+      flash[:notice] = "スキル表を更新しました"
+    end
     redirect_to users_path
   end
 
@@ -30,7 +33,9 @@ class User::UsersController < ApplicationController
 
   def desired_condition_update
     user = current_user
-    user.update(desired_condition_params)
+    if user.update(desired_condition_params)
+      flash[:notice] = "希望条件を更新しました"
+    end
     redirect_to users_path
   end
 
@@ -40,7 +45,9 @@ class User::UsersController < ApplicationController
 
   def self_pr_update
     user = current_user
-    user.update(self_pr_params)
+    if user.update(self_pr_params)
+      flash[:notice] = "自己PRを更新しました"
+    end
     redirect_to users_path
   end
 
