@@ -1,0 +1,2 @@
+module Enterprise::RoomsHelper
+end

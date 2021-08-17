@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   resources :chats, only: [:create]
   
   namespace :enterprise do
-
     get 'homes/top' => "homes#top", as: "top"
     get 'homes/about' => "homes#about", as: "about"
 
@@ -31,12 +30,11 @@ Rails.application.routes.draw do
     get '/search_result' => "enterprises#search_result", as: "search_result"
 
     resources :relationships, only: [:create, :destroy]
-
+    resources :rooms, only: [:index]
   end
 
 
   scope module: :user do
-
     get '/' => 'homes#top', as: 'top'
     get '/about' =>'homes#about', as: 'about'
 
@@ -52,7 +50,6 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
 
     resources :enterprises, only: [:show]
-
   end
 
 

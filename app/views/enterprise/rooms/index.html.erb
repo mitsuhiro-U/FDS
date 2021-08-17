@@ -1,0 +1,11 @@
+<div class="container">
+  <h4>チャットルーム一覧</h4>
+  <table class="table">
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.user.full_name %></td>
+        <td><%= link_to "チャット画面へ", chat_path(room.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

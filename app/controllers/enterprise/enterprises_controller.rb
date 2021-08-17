@@ -41,7 +41,11 @@ class Enterprise::EnterprisesController < ApplicationController
   def withdrawal
   end
 
-  def withdrawal_up
+  def withdrawal_update
+    enterprise = current_enterprise
+    enterprise.update(is_active: false)
+    reset_session
+    redirect_to enterprise_top_path
   end
 
   private

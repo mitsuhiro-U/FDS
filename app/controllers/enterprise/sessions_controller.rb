@@ -24,4 +24,11 @@ class Enterprise::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def reject_inactive_enterprise
+    @enterprise = enterprise.find_by(email: params[:enterprise][:email])
+     if @enterprise.valid_password?(params[:enterprise][:password]) && !@enterprise.is_active
+      redirect_to new_enterprise_session_path
+     end
+  end
 end
