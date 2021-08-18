@@ -10,80 +10,67 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
       <div class="container">
-
         <%= link_to top_path, method: :get do %>
-          <img src="images/FDS_logo.png">
+          <%= image_tag "FDS_logo.png", size: "200x80" %>
         <% end %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-
-            <% if user_signed_in? %>
-              <li class=" nav-item mr-5">
-                ようこそ、<%= current_user.last_name %>さん！
-              </li>
-              <li class="btn btn-outline-secondary nav-item mr-5">
-                <%= link_to "マイプロイール", users_path %>
-              </li>
-              <li class="btn btn-outline-secondary nav-item mr-5">
-                <%= link_to "フォロー申請一覧", followers_path %>
-              </li>
-              <li class="btn btn-outline-secondary nav-item mr-5">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              </li>
-              <li class="btn btn-outline-secondary nav-item mr-5">
-                <%= link_to "退会", edit_users_path %>
-              </li>
-
-            <% elsif enterprise_signed_in? %>
-              </li>
-                <li class="btn btn-outline-secondary nav-item mr-5">
-                  <%= link_to "チャットルーム", enterprise_rooms_path %>
-                </li>
-                <li class="btn btn-outline-secondary nav-item mr-5">
-                  <%= link_to "求職者様一覧",  enterprise_users_path %>
-                </li>
-                <li class="btn btn-outline-secondary nav-item mr-5">
-                  <%= link_to "スキル表から検索", enterprise_user_search_path %>
-                </li>
-                <li class="btn btn-outline-secondary nav-item mr-5">
-                <%= link_to "ログアウト", destroy_enterprise_session_path, method: :delete %>
-                </li>
-                <li class="btn btn-outline-secondary nav-item mr-5">
-                  <%= link_to "退会", enterprise_withdrawal_path %>
-                </li>
-
-            <% else %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    求職者様用メニュー
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <%= link_to "FDSについて", about_path, class: "dropdown-item" %>
-                    <%= link_to "無料会員登録", new_user_registration_path, class: "dropdown-item" %>
-                    <%= link_to "ログイン", new_user_session_path, class: "dropdown-item" %>
-                </div>
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    企業様用メニュー
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <%= link_to "FDSについて", about_path, class: "dropdown-item" %>
-                    <%= link_to "会員登録", new_user_registration_path, class: "dropdown-item" %>
-                    <%= link_to "ログイン", new_user_session_path, class: "dropdown-item" %>
-                </div>
-              </li>
-            <% end %>
-
-          </ul>
+        <div class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <p class="mr-5">ようこそ、<%= current_user.last_name %>さん！</p>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                メニュー
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "マイページ", users_path, class: "dropdown-item" %>
+                <%= link_to "フォロー申請一覧", followers_path, class: "dropdown-item" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to "退会", edit_users_path, class: "dropdown-item" %>
+              </div>
+            </div>
+          <% elsif enterprise_signed_in? %>
+            <p class='mr-5'>ようこそ、<%= current_enterprise.name %>さん！</p>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                メニュー
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "マイページ", enterprise_enterprises_path, class: "dropdown-item" %>
+                <%= link_to "チャットルーム", enterprise_rooms_path, class: "dropdown-item" %>
+                <%= link_to "求職者様一覧", enterprise_users_path, class: "dropdown-item" %>
+                <%= link_to "スキル表から検索", enterprise_user_search_path, class: "dropdown-item" %>
+                <%= link_to "ログアウト", destroy_enterprise_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to "退会", enterprise_withdrawal_path, class: "dropdown-item" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle mr-5" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                求職者様用メニュー
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "FDSについて", about_path, class: "dropdown-item" %>
+                <%= link_to "無料会員登録", new_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "ログイン", new_user_session_path, class: "dropdown-item" %>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                企業様用メニュー
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "FDSについて", about_path, class: "dropdown-item" %>
+                <%= link_to "無料会員登録", new_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "ログイン", new_user_session_path, class: "dropdown-item" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </nav>
 
     <%= yield %>
+
   </body>
 </html>

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-sm-12">
 
       <% if user_signed_in? %>
-        <h2><%= @enterprise.name %></h2>
+        <h2 class="mb-5"><%= @enterprise.name %></h2>
         <table class="message table">
           <thead>
             <tr>
@@ -32,7 +32,7 @@
           <% end %>
         </table>
       <% elsif enterprise_signed_in? %>
-        <h2>CHAT WITH <%= @user.full_name %></h2>
+        <h2 class="mb-5"><%= @user.full_name %></h2>
         <table class="message table">
           <thead>
             <tr>
@@ -63,9 +63,9 @@
       <% end %>
 
       <%= form_with model: @chat, remote: true do |f| %>
-        <%= f.text_field :message %>
+        <%= f.text_field :message, class: "form-size-message" %>
         <%= f.hidden_field :room_id %>
-        <%= f.submit "SEND", class: "btn btn-sm btn-success chat-btn" %>
+        <%= f.submit "送信", class: "btn btn-sm btn-success chat-btn" %>
       <% end %>
     </div>
   </div>

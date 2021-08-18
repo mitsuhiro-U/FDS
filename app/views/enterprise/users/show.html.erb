@@ -2,16 +2,17 @@
   <%# 下記1行はモデルのメソッドを使用 %>
   <h4><%= @user.full_name %>の詳細ページ</h4>
 
-  <h5>特記事項</h5>
+  <h5 class="mt-5">特記事項</h5>
   <%= @user.notice %>
+  <div class="space"></div>
 
-  <h5>自己PR</h5>
+  <h5 class="mt-5">自己PR</h5>
   <p>職務履歴</p>
 　<%= @user.job_career %>
 　<p>職務要約</p>
 　<%= @user.job_summary %>
 
-　<h5>希望条件</h5>
+　<h5 class="mt-5">希望条件</h5>
 　<p>希望年収</p>
   <%= @user.desired_salary %>
   <p>希望勤務地</p>
@@ -22,7 +23,9 @@
   <%= @user.timing %>
   <p>その他希望事項</p>
   <%= @user.request %>
-  
+
   <%= render 'enterprise/relationships/follow_form', user: @user %>
+
+  <div class="footer-space"></div>
 
 </div>

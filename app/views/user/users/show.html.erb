@@ -52,7 +52,7 @@
   </div>
 
   <% @rooms.each do |room| %>
-    <%= link_to "#{room.enterprise.name}", chat_path(room.id)  %>
+    <%= link_to "#{room.enterprise.name}", chat_path(room.enterprise.id)  %>
   <% end %>
 
 

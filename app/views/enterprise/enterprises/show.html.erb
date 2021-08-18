@@ -1,6 +1,6 @@
 <div class="container">
-
-   <div class="row mt-3">
+  <h4 class="title2">マイページ</h4>
+  <div class="row mt-3">
     <div class="col-sm-2">
       <p>企業情報</p>
     </div>
@@ -9,29 +9,28 @@
       <%= link_to "企業情報を編集", edit_enterprise_enterprises_path, class: "btn btn-success w-25" %>
     </div>
   </div>
-
   <div class="row mt-3">
     <div class="col-sm-2">
       <p>業務内容</p>
     </div>
     <div class="col-sm-2">
       <% if current_enterprise.business_content == nil %>
-        <p>未入力</p>
+        <p class="text-danger">未入力</p>
       <% else %>
-        <p>入力済</p>
+        <p class="text-primary">入力済</p>
       <% end %>
     </div>
     <div class="col-sm-8">
       <%= link_to "業務内容を入力", enterprise_business_content_path, class: "btn btn-success w-25", data: {"turbolinks" => false} %>
     </div>
   </div>
-
+  <div class="space"></div>
   <h4>フォロー中のユーザー</h4>
   <span>チャット可能と表示されたユーザーとのチャットはチャットルームから開始出来ます</span>
   <table class="table mt-3">
     <% @users.each do |user| %>
     <tr>
-      <td><%= user.full_name %></td>
+      <td><%=link_to "#{user.full_name}", enterprise_user_path(user.id) %></td>
       <td>
         <% if user.rooms.find_by(enterprise_id: current_enterprise.id) %>
           チャット可能

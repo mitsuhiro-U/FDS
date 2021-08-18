@@ -1,5 +1,5 @@
 class ChatsController < ApplicationController
-  
+
   def show
     if user_signed_in?
       @enterprise = Enterprise.find(params[:id])
@@ -10,6 +10,8 @@ class ChatsController < ApplicationController
           room.enterprise_id = @enterprise.id
         room.save
       end
+      @chats = room.chats
+      @chat = Chat.new(room_id: room.id, enterprise_id: @enterprise.id)
     elsif enterprise_signed_in?
       @user = User.find(params[:id])
       room = Room.find_by(user_id: @user.id, enterprise_id: current_enterprise.id)
@@ -19,20 +21,22 @@ class ChatsController < ApplicationController
           room.enterprise_id = current_enterprise.id
         room.save
       end
+      @chats = room.chats
+      @chat = Chat.new(room_id: room.id, user_id: @user.id)
     end
-
-    @chats = room.chats
-    @chat = Chat.new(room_id: room.id)
   end
 
   def create
+    #binding.pry
     if user_signed_in?
       @chat = current_user.chats.new(user_chat_params)
-      @chat.save
-
     elsif enterprise_signed_in?
       @chat = current_enterprise.chats.new(enterprise_chat_params)
-      @chat.save
+    end
+    if @chat.save
+      render :create
+    else
+      render js: 'error'
     end
   end
 
