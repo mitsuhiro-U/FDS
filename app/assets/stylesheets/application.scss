@@ -17,6 +17,10 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.field_with_errors {
+  display: contents;
+  // もしくは diplay: inline;
+}
 
 .center{
   width: 100%;

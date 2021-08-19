@@ -3,7 +3,13 @@
     <div class="col-sm-12">
 
       <% if user_signed_in? %>
-        <h2 class="mb-5"><%= @enterprise.name %></h2>
+        <h2 class="mb-5">
+          <%= @enterprise.name %>
+          <% if @enterprise.is_active %>
+          <% else %>
+            <span class="text-danger">(退会済)</span>
+          <% end %>
+        </h2>
         <table class="message table">
           <thead>
             <tr>
@@ -32,7 +38,13 @@
           <% end %>
         </table>
       <% elsif enterprise_signed_in? %>
-        <h2 class="mb-5"><%= @user.full_name %></h2>
+        <h2 class="mb-5">
+          <%= @user.full_name %>
+          <% if @user.is_active %>
+          <% else %>
+            <span class="text-danger">(退会済)</span>
+          <% end %>
+        </h2>
         <table class="message table">
           <thead>
             <tr>

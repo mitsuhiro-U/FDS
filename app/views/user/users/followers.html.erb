@@ -1,19 +1,22 @@
 
 <div class="container">
-
   <h4>フォロー申請一覧</h4>
-
-  <table>
+  <p>下記企業様詳細リンクからチャットの開始が可能です</p>
+  <div class="space"></div>
+  <table class="table">
     <% @enterprises.each do |enterprise| %>
       <tr>
         <td>
-          <%= link_to "#{enterprise.name}", enterprise_path(enterprise.id) %>
+          <p><%= link_to "#{enterprise.name}", enterprise_path(enterprise.id) %></p>
         </td>
         <td>
-
+          <% if enterprise.is_active %>
+          <% else %>
+            <p class="text-danger">退会済の企業様です</p>
+          <% end %>
         </td>
       </tr>
+
     <% end %>
   </table>
-
 </div>

@@ -1,5 +1,7 @@
 class Enterprise::EnterprisesController < ApplicationController
 
+  before_action :authenticate_enterprise!
+
   def show
     @enterprise = current_enterprise
     @users = @enterprise.followings.all
@@ -26,16 +28,16 @@ class Enterprise::EnterprisesController < ApplicationController
   end
 
   def user_search
-    @user = User.all
+    @users = User.all
   end
 
   def search_result
     @users = User.where(
       "(specialized_field = ?)  and (number >= ?)  and (manufacturing_status >= ?)  and (purchasing_status >= ?)  and
-      (quality_management_status >= ?) and (food_labeling_status >= ?) and (management_status >= ?)",
+      (quality_management_status >= ?) and (food_labeling_status >= ?) and (management_status >= ?)and (is_active = ?)",
       params[:user][:specialized_field],params[:user][:number],params[:user][:manufacturing_status],params[:user][:purchasing_status],
-      params[:user][:quality_management_status],params[:user][:food_labeling_status],params[:user][:management_status]
-    )
+      params[:user][:quality_management_status],params[:user][:food_labeling_status],params[:user][:management_status],true
+    ).page(params[:page]).per(5)
   end
 
   def withdrawal
@@ -45,7 +47,7 @@ class Enterprise::EnterprisesController < ApplicationController
     enterprise = current_enterprise
     enterprise.update(is_active: false)
     reset_session
-    redirect_to enterprise_top_path
+    redirect_to enterprise_top_path, notice: "退会処理が完了しました"
   end
 
   private

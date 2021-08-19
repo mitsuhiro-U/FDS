@@ -1,7 +1,7 @@
 <div class="container">
   <h4>希望条件</h4>
   <p><span class="text-danger">*</span>は入力必須事項です。</p>
-
+  <p class="text-danger"><%= alert %></p>
   <%= form_with model: @user, url: desired_condition_update_path, local: true do |f| %>
 
     <div class="row mt-3">
@@ -47,7 +47,7 @@
         <p>※200字以内</p>
       </div>
       <div class="col-sm-9">
-        <%= f.text_area :request, maxlength: 200, placeholder: "(例)マイカー通勤可能であれば尚可", size: "60x15", class: 'js-text-200' %>
+        <%= f.text_area :request, maxlength: 200, placeholder: "(例)マイカー通勤可能であれば尚可", class: 'js-text-200 form-size' %>
         <p class="js-text-count-200"></p>
       </div>
     </div>

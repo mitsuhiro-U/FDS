@@ -1,2 +1,11 @@
-<h1>Enterprise::Homes#top</h1>
-<p>Find me in app/views/enterprise/homes/top.html.erb</p>
+<div class="center">
+  <p class="text-success mb-5"><%= flash[:notice] %></p>
+  <h2>FDS（ロゴ）は食品開発の中途採用に特化したサイトです。</h2>
+  <div class="space"></div>
+  <h4>
+    独自に開発したスキル表で応募者様の<strong class="text-danger">スキルが『可視化』</strong>されているので、<br>
+    御社の求めるスキルを持った<br>
+    求職者様を<strong class="text-danger">効率的にスカウティング</strong>できます。
+  </h4>
+  <%=link_to "今すぐ会員登録する(無料)", new_enterprise_registration_path, class: "btn btn-success mt-5" %>
+</div>

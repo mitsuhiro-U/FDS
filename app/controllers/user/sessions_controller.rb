@@ -19,18 +19,22 @@ class User::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+
   def reject_inactive_user
     @user = User.find_by(email: params[:user][:email])
-     if @user.valid_password?(params[:user][:password]) && !@user.is_active
-      redirect_to new_user_session_path
-     end
+      if @user == nil
+        redirect_to new_user_session_path
+      elsif
+        @user.valid_password?(params[:user][:password]) && !@user.is_active
+        redirect_to new_user_session_path, alert: "退会済のアカウントです"
+      end
   end
 
 end

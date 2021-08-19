@@ -38,6 +38,12 @@
           承認待ち
         <% end %>
       </td>
+      <td>
+        <% if user.is_active %>
+        <% else %>
+          <span class="text-danger">退会済のユーザーです</span>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </table>

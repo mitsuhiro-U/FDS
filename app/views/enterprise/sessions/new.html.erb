@@ -1,7 +1,7 @@
 <div class="container">
 
   <h4>企業様ログイン</h4>
-
+  <p class="text-danger mb-5"><%= flash[:alert] %></p>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="row mt-3">

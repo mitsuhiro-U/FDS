@@ -4,7 +4,13 @@
     <% @rooms.each do |room| %>
       <tr>
         <td><%= room.user.full_name %></td>
-        <td><%= link_to "チャット画面へ", chat_path(room.id) %></td>
+        <td>
+          <% if room.user.is_active %>
+          <% else %>
+            <span class="text-danger">退会済のユーザーです</span>
+          <% end %>
+        </td>
+        <td><%= link_to "チャット画面へ", chat_path(room.user.id) %></td>
       </tr>
     <% end %>
   </table>

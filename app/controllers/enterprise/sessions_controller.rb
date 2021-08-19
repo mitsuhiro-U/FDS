@@ -2,6 +2,7 @@
 
 class Enterprise::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+   before_action :reject_inactive_enterprise, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -18,7 +19,7 @@ class Enterprise::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
@@ -26,9 +27,12 @@ class Enterprise::SessionsController < Devise::SessionsController
   # end
 
   def reject_inactive_enterprise
-    @enterprise = enterprise.find_by(email: params[:enterprise][:email])
-     if @enterprise.valid_password?(params[:enterprise][:password]) && !@enterprise.is_active
+    @enterprise = Enterprise.find_by(email: params[:enterprise][:email])
+    if @enterprise == nil
       redirect_to new_enterprise_session_path
-     end
+    elsif @enterprise.valid_password?(params[:enterprise][:password]) && !@enterprise.is_active
+      redirect_to new_enterprise_session_path, alert: "退会済のアカウントです"
+    end
   end
+
 end

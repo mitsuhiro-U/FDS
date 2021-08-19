@@ -9,9 +9,9 @@
     </div>
     <div class="col-sm-2">
       <% if current_user.specialized_field == nil %>
-        <p>未入力</p>
+        <p class="text-danger">未入力</p>
       <% else %>
-        <p>入力済</p>
+        <p class="text-success">入力済</p>
       <% end %>
     </div>
     <div class="col-sm-8">
@@ -25,9 +25,9 @@
     </div>
     <div class="col-sm-2">
       <% if current_user.desired_salary == nil %>
-        <p>未入力</p>
+        <p class="text-danger">未入力</p>
       <% else %>
-        <p>入力済</p>
+        <p class="text-success">入力済</p>
       <% end %>
     </div>
     <div class="col-sm-8">
@@ -41,19 +41,32 @@
     </div>
     <div class="col-sm-2">
       <% if current_user.job_career == nil %>
-        <p>未入力</p>
+        <p class="text-danger">未入力</p>
       <% else %>
-        <p>入力済</p>
+        <p class="text-success">入力済</p>
       <% end %>
     </div>
     <div class="col-sm-8">
       <%= link_to "自己PR入力", self_pr_edit_path, class: "btn btn-success w-25", data: {"turbolinks" => false} %>
     </div>
   </div>
-
-  <% @rooms.each do |room| %>
-    <%= link_to "#{room.enterprise.name}", chat_path(room.enterprise.id)  %>
-  <% end %>
-
+  <div class="space"></div>
+  <h4>企業様とのチャット</h4>
+  <p>チャットの開始は、フォロー申請一覧の企業様詳細ベージから可能です</p>
+  <table class="table">
+    <% @rooms.each do |room| %>
+      <tr>
+        <td>
+          <p><%= link_to "#{room.enterprise.name}", chat_path(room.enterprise.id)  %></p>
+        </td>
+        <td>
+          <% if room.enterprise.is_active %>
+          <% else %>
+            <p class="text-danger">退会済の企業様です</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 
 </div>
