@@ -25,9 +25,9 @@
 企業様　　　食品開発者の中途採用が必要になった時
 
 ## 設計書
-- [ワイヤーフレーム user](https://drive.google.com/file/d/1w79hgAiuDjOSiqwEt0pjqfPkEO0jW8Ch/view?usp=sharing)
-- [ワイヤーフレーム Enterprise](https://drive.google.com/file/d/1sUOiCm0vcIpcWITcsR6GmHPoqU_9B4uo/view?usp=sharing)
-- [ER図](https://drive.google.com/file/d/1B8RmoAE3SMzvS3EepiEfV_XUwQ1Acls7/view?usp=sharing)
+- [ワイヤーフレーム user](https://drive.google.com/file/d/18fCcj_lTY-KLA_iTveCKI_30RGQEEvod/view?usp=sharing)
+- [ワイヤーフレーム Enterprise](https://drive.google.com/file/d/1CxqB2U9vOtWPYG0k-evuhg8Z6qe8jkR_/view?usp=sharing)
+- [ER図](https://drive.google.com/file/d/124Dpne8TsEOC2Ym06z4edcPReTgZSs_8/view?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/185o6gfScVRTZrTMi7lMv-KOn7MLL5uKzFwAr6t_cvx8/edit?usp=sharing)
 
 
