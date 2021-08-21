@@ -8,21 +8,51 @@
 
   <h5 class="mt-5">自己PR</h5>
   <p>職務履歴</p>
-　<%= @user.job_career %>
+  <%= @user.job_career %>
 　<p>職務要約</p>
-　<%= @user.job_summary %>
+  <%= @user.job_summary %>
 
 　<h5 class="mt-5">希望条件</h5>
-　<p>希望年収</p>
-  <%= @user.desired_salary %>
-  <p>希望勤務地</p>
-  <%= @user.preferred_workplace %>
-  <p>希望分野</p>
-  <%= @user.desired_field %>
-  <p>転職時期</p>
-  <%= @user.timing %>
-  <p>その他希望事項</p>
-  <%= @user.request %>
+　<div class="row">
+    <div class="col-sm-3">
+      <p>希望年収</p>
+　  </div>
+    <div class="col-sm-9">
+      <%= @user.desired_salary %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>希望勤務地</p>
+    </div>
+    <div class="col-sm-9">
+      <%= @user.preferred_workplace %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>希望分野</p>
+    </div>
+    <div class="col-sm-9">
+      <%= @user.desired_field %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>転職時期</p>
+    </div>
+    <div class="col-sm-9">
+      <%= @user.timing %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>その他希望事項</p>
+    </div>
+    <div class="col-sm-9">
+      <%= @user.request %>
+    </div>
+  </div>
 
   <%= render 'enterprise/relationships/follow_form', user: @user %>
 
