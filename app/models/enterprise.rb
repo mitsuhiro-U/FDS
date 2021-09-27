@@ -16,6 +16,10 @@ class Enterprise < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   #---------------------------------------------------------------------------------------------------------
+  
+  #------- バリテーション関連-------------------------------------------------------------------------
+  validates :name_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
+  #---------------------------------------------------------------------------------------------------------
 
   def following?(user)
     self.followings.include?(user)

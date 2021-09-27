@@ -1,8 +1,10 @@
 <div class="container">
   <h4>企業様用新規会員登録</h4>
-  <p class="text-danger mb-5"><%= flash[:alert] %></p>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%#= render "enterprise/shared/error_messages", resource: resource %>
+    <% if resource.errors.any? %>
+      <p class="text-danger">全ての項目が入力必須です。</p>
+      <p class="text-danger">御社名(カナ)は全角カタカナで入力してください。</p>
+    <% end %>
 
     <div class="row mt-3">
       <div class="col-sm-3">

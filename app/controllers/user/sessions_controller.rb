@@ -33,7 +33,7 @@ class User::SessionsController < Devise::SessionsController
         redirect_to new_user_session_path
       elsif
         @user.valid_password?(params[:user][:password]) && !@user.is_active
-        redirect_to new_user_session_path, alert: "退会済のアカウントです"
+        redirect_to new_user_session_path
       end
   end
 

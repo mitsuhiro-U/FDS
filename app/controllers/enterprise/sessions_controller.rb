@@ -31,7 +31,7 @@ class Enterprise::SessionsController < Devise::SessionsController
     if @enterprise == nil
       redirect_to new_enterprise_session_path
     elsif @enterprise.valid_password?(params[:enterprise][:password]) && !@enterprise.is_active
-      redirect_to new_enterprise_session_path, alert: "退会済のアカウントです"
+      redirect_to new_enterprise_session_path
     end
   end
 
